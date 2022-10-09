@@ -20,9 +20,7 @@ const BlogDetails = () => {
             }).catch((e) => console.log("Something fail"))
         }
     
-    const changeClass = () => {
 
-    }
 
     return ( 
         <div className="blog-details">
@@ -31,11 +29,10 @@ const BlogDetails = () => {
             { post && (
                 <article>
                     
-                    <h2>{ post.title }</h2>
-                    <div>{ post.body }</div>
+                    <h2>{ post.description }</h2>
+                    <div>{ post.completed }</div>
                     <p> Written by { post.userId }</p>
                     <button onClick={ handleClick }>Delete</button>
-                    <button onClick={ changeClass }>See comments...</button>
                     
                 </article>
             ) }

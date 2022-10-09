@@ -3,7 +3,6 @@ import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import loginService from './services/login'
-import login from "./services/login";
 
 // post /users/login to login user
 
@@ -21,13 +20,13 @@ const LoginPage = () => {
         try {
             e.preventDefault()
             const user = await loginService.login({
-                email: username,
-                password
+                email: e.target.username.value,
+                password: e.target.password.value
             })
-            console.log(user)
             setUser(user)
             setPassword('')
             setUsername('')
+            history('/home');
             
         } catch(e) {
             console.log(e)
@@ -37,27 +36,30 @@ const LoginPage = () => {
 
     return (
         <div className="login-user">
+            <h1>Login</h1>
           <form onSubmit={handleLogin}>
-           <div>
+           <div className="txt_field">
                 <input 
                     type="text"
                     value={username}
                     name= 'username'
-                    placeholder="Username"
                     onChange={(target) => { setUsername(target.value)}} 
-                    />
-            </div>
-            <div>
-            <input 
-                type="password"
-                value={password}
-                name= 'password'
-                placeholder="Password"
-                onChange={(target) => { setPassword(target.value)}} 
                 />
+                <span></span>
+                <label>E-mail</label>
+            </div>
+            <div className="txt_field">
+                <input 
+                    type="password"
+                    value={password}
+                    name= 'password'
+                    onChange={(target) => { setPassword(target.value)}} 
+                />
+                <span></span>
+                <label>Password</label>
             </div>
             <div>
-                <button>Log In</button> 
+                <button className="login-btn">Log In</button> 
             </div>
           </form>
         </div>
