@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import LoginPage from './LoginPage'
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
      <Navbar />
       <div className="content">
       <Routes>     
+          <Route exact path='/login' element= {<LoginPage/>}>
+          </Route>
           <Route exact path="/" element= {<Home />}>
           </Route>
           <Route path="/create" element= {<Create/>}>
