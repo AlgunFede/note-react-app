@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 const BlogDetails = () => {
 
     const { id } = useParams();
-    const { data: post, isPending, error } = useFetch('https://jsonplaceholder.typicode.com/posts/' + id);
+    console.log(id)
+    const { data: post, isPending, error } = useFetch('http://localhost:3000/task/' + id);
+    console.log(post)
 
 
     const history = useNavigate();

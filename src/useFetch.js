@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const useFetch = (url) => {
 
@@ -7,13 +8,20 @@ const [isPending, setIsPending] = useState(true);
 const [error, setError] = useState(null);
 
 
-useEffect( () => {
+    useEffect( () => {
 
-    const abortCont = new AbortController();
+        const token = window.localStorage.getItem('loggedTaskAppUser');
+        const abortCont = new AbortController();
 
-        setTimeout(() => {
-            fetch(url, { signal: abortCont.signal })
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${JSON.parse(token)}`
+            }
+        }
+
+        fetch(url, config)
             .then(res => {
+                console.log('PRIMER THEN', res)
                 if(!res.ok) {
                     throw Error('Can\'t reach that request')
                 }
@@ -34,12 +42,11 @@ useEffect( () => {
                     setIsPending(false)
                 }
             })
-        }, 500)
 
-        return () => abortCont.abort();
-    }, [url]);
 
-return { data, isPending, error }
+        }, [url]);
+
+    return { data, isPending, error }
 
 }
 

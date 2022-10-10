@@ -24,6 +24,9 @@ const LoginPage = () => {
                 password: e.target.password.value
             })
             setUser(user)
+            window.localStorage.setItem(
+                'loggedTaskAppUser', JSON.stringify(user.token)
+            )
             setPassword('')
             setUsername('')
             history('/home');
