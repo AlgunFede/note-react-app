@@ -19,7 +19,7 @@ function App() {
           </Route>
           <Route path="/create" element= {<Create/>}>
           </Route>  
-          <Route path="/task/:_id" element = {<BlogDetails/>}>
+          <Route path="home/task/:id" element = {<BlogDetails/>}>
           </Route>  
           <Route path="*" element= {<NotFound/>}>
           </Route>  

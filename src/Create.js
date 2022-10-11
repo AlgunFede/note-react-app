@@ -1,29 +1,37 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Create = () => {
 
     const { id } = useParams()
-    const [title, setTitle] = useState(''); 
-    const [body, setBody] = useState('');
+    const [status, setStatus] = useState('Not Started'); 
+    const [description, setDescription] = useState('');
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const post = { title, body };
+        const task = { description, status };
         setIsPending(true);
         
-        fetch(`https://jsonplaceholder.typicode.com/posts/`, {
+        console.log('LA TASK PARA SUBIR',task)
+        const token = window.localStorage.getItem('loggedTaskAppUser');
+        const abortCont = new AbortController();
+
+        const config = {
             method: 'POST',
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(post)
-        }).then((e) => {
-            console.log("Post added!")
+            headers: {
+                'Authorization': `Bearer ${JSON.parse(token)}`,
+            },
+            body: JSON.stringify(task)
+        }
+
+        fetch('http://localhost:3000/task/', config).then((e) => {
             setIsPending(false)
-            history('/');
-        }).catch(e => console.log("Failed"))
+            history('/home');
+        }).catch(e => console.log("Failed", e))
 
     }
 
@@ -32,20 +40,22 @@ const Create = () => {
         <div className="create">
             <h2>Add new Post</h2>
             <form onSubmit={handleSubmit}>
-                <label>Blog title</label>
-                <input type="text" 
-                required
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                <label>Blog body</label>
+                <label>Task description</label>
                 <textarea 
                 required
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
+                <label>Status</label>
+                <select 
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}>
+                    <option>Not Started</option>
+                    <option>Work in Progress</option>
+                    <option>Done</option>
+                </select>
 
-                { !isPending && <button>Add Blog</button>}
+                { !isPending && <button>Add Task</button>}
                 { isPending && <button disabled>Adding Blog...</button>}
             </form>
         </div>

@@ -13,8 +13,10 @@ const LoginPage = () => {
     const [user, setUser] = useState(null);
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
-
-
+    const jwtToken = window.localStorage.getItem('loggedTaskAppUser')
+    if(jwtToken) {
+        history('/home')
+    }
     const handleLogin =  async (e) => {
         
         try {

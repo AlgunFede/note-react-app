@@ -6,23 +6,28 @@ import { useNavigate } from "react-router-dom";
 const BlogDetails = () => {
 
     const { id } = useParams();
-    console.log(id)
+    console.log('ID de BlogDetails', id)
     const { data: post, isPending, error } = useFetch('http://localhost:3000/task/' + id);
-    console.log(post)
 
+    // Get token
+    const token = window.localStorage.getItem('loggedTaskAppUser');
+
+    const config = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${JSON.parse(token)}`
+        }
+    }
 
     const history = useNavigate();
 
-        const handleClick = () => {
-            fetch('https://jsonplaceholder.typicode.com/posts/' + post.id, {
-                method: 'DELETE'
-            }).then( () => {
-                console.log("Deleted")
-                history('/')
+    const handleClick = () => {
+        fetch('http://localhost:3000/task/' + id, config)
+            .then( (res) => {
+                console.log('Tarea borrada', res)
+                history('/home')
             }).catch((e) => console.log("Something fail"))
-        }
-    
-
+    }
 
     return ( 
         <div className="blog-details">

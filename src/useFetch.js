@@ -7,7 +7,6 @@ const [data, setBlogs] = useState(null);
 const [isPending, setIsPending] = useState(true);
 const [error, setError] = useState(null);
 
-
     useEffect( () => {
 
         const token = window.localStorage.getItem('loggedTaskAppUser');
@@ -21,14 +20,12 @@ const [error, setError] = useState(null);
 
         fetch(url, config)
             .then(res => {
-                console.log('PRIMER THEN', res)
                 if(!res.ok) {
                     throw Error('Can\'t reach that request')
                 }
                 return res.json();
             })
             .then( data => {
-                console.log(data)
                 setBlogs(data);
                 setIsPending(false);
                 setError(null)
