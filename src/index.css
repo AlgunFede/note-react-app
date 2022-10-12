@@ -142,7 +142,31 @@ form .txt_field{
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
 }
+.logout-button {
+  outline: none;
+  border: none;
+  background-color: white;
+  color: #f1356d;
+  padding: 6px 18px;
+  margin: 10px auto;
+  margin-right: 10px;
+  text-align: left;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.7s;
+  border: 1px solid #f1356d;
+}
 
+.logout-button:hover{
+  background-color: #f1356d;
+  color: white;
+  transition: 0.7s;
+}
+.edit-button:hover {
+  background-color: grey;
+  color: white;
+  transition: 0.7s;
+}
 .blog-preview button, .blog-details button{
   outline: none;
   border: none;

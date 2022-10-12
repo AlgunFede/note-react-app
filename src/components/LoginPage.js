@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import loginService from './services/login'
+import { useEffect, useState } from "react";
+import loginService from '../services/login'
 
 // post /users/login to login user
 
@@ -13,10 +13,13 @@ const LoginPage = () => {
     const [user, setUser] = useState(null);
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
-    const jwtToken = window.localStorage.getItem('loggedTaskAppUser')
-    if(jwtToken) {
-        history('/home')
-    }
+    const jwtToken = window.localStorage.getItem('loggedTaskAppUser');
+
+    useEffect(() => {   
+        if(jwtToken) {
+            history('/home')
+        }
+    })
     const handleLogin =  async (e) => {
         
         try {

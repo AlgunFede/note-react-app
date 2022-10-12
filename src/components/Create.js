@@ -16,22 +16,26 @@ const Create = () => {
         const task = { description, status };
         setIsPending(true);
         
-        console.log('LA TASK PARA SUBIR',task)
         const token = window.localStorage.getItem('loggedTaskAppUser');
         const abortCont = new AbortController();
 
         const config = {
-            method: 'POST',
             headers: {
                 'Authorization': `Bearer ${JSON.parse(token)}`,
             },
-            body: JSON.stringify(task)
         }
 
-        fetch('http://localhost:3000/task/', config).then((e) => {
-            setIsPending(false)
-            history('/home');
-        }).catch(e => console.log("Failed", e))
+        const data = async () => {
+
+            await axios.post('http://localhost:3000/task/', task, config).then((res) => {
+                setIsPending(false);
+                history('/home')
+            }).catch((e) => {
+                console.log(e)
+            })
+        } 
+        data()
+            
 
     }
 

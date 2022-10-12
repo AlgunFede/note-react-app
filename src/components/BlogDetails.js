@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 const BlogDetails = () => {
 
     const { id } = useParams();
-    console.log('ID de BlogDetails', id)
     const { data: post, isPending, error } = useFetch('http://localhost:3000/task/' + id);
 
     // Get token
@@ -24,11 +23,14 @@ const BlogDetails = () => {
     const handleClick = () => {
         fetch('http://localhost:3000/task/' + id, config)
             .then( (res) => {
-                console.log('Tarea borrada', res)
                 history('/home')
             }).catch((e) => console.log("Something fail"))
     }
 
+    
+    const handleEdit = () => {
+        history('/create')
+    }
     return ( 
         <div className="blog-details">
             { error && <div> {error} </div> }
@@ -37,9 +39,14 @@ const BlogDetails = () => {
                 <article>
                     
                     <h2>{ post.description }</h2>
+                    <textarea 
+                    required
+                    placeholder="ARREGLA ESTO"
+                    ></textarea>
                     <div>{ post.completed }</div>
                     <p> Written by { post.userId }</p>
                     <button onClick={ handleClick }>Delete</button>
+                    <button className="edit-button" onClick={ handleEdit }>Edit</button>
                     
                 </article>
             ) }
@@ -47,4 +54,4 @@ const BlogDetails = () => {
      );
 }
  
-export default BlogDetails;
+export default BlogDetails;    console.log('LLEGO LA REQ')
