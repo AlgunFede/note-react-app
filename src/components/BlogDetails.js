@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 const BlogDetails = () => {
@@ -8,6 +9,7 @@ const BlogDetails = () => {
     const { id } = useParams();
     const { data: post, isPending, error } = useFetch('http://localhost:3000/task/' + id);
 
+    const [enableEdit, setEnableEdit] = useState(false)
     // Get token
     const token = window.localStorage.getItem('loggedTaskAppUser');
 
@@ -27,24 +29,22 @@ const BlogDetails = () => {
             }).catch((e) => console.log("Something fail"))
     }
 
-    
     const handleEdit = () => {
-        history('/create')
+        setEnableEdit(true)
     }
+
     return ( 
+        
         <div className="blog-details">
             { error && <div> {error} </div> }
             { isPending && <div>Loading...</div> }
             { post && (
                 <article>
                     
-                    <h2>{ post.description }</h2>
-                    <textarea 
-                    required
-                    placeholder="ARREGLA ESTO"
-                    ></textarea>
-                    <div>{ post.completed }</div>
-                    <p> Written by { post.userId }</p>
+                    { !enableEdit && <h2>{ post.description }</h2>}
+                    { enableEdit && <textarea>{ post.description }</textarea> }
+                    <p>{ post.status }</p>
+                    <p> Created: { Date(post.createdAt) }</p>
                     <button onClick={ handleClick }>Delete</button>
                     <button className="edit-button" onClick={ handleEdit }>Edit</button>
                     
@@ -54,4 +54,4 @@ const BlogDetails = () => {
      );
 }
  
-export default BlogDetails;    console.log('LLEGO LA REQ')
+export default BlogDetails;
