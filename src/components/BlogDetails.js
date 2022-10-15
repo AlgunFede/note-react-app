@@ -52,6 +52,7 @@ const BlogDetails = () => {
     const handleCancelEdit = () => {
         setEnableEdit(false)
     }
+
     return ( 
         
         <div className="blog-details">

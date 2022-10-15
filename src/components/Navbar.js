@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Navbar = (props) => {
+const Navbar = () => {
 
     const history = useNavigate()
     let isLoggedIn = false
@@ -30,7 +30,7 @@ const Navbar = (props) => {
         <nav className="navbar">
             <h1>NoteIt! <span>(beta)</span> </h1>
             <div className="links">
-                { isLoggedIn && <button className="logout-button" onClick={ handleLogout }>Log out</button>}
+                { isLoggedIn && <Link to="/profile">Profile</Link> }
                 { isLoggedIn && <Link to="/home">Home</Link> }
                 { isLoggedIn && <Link to="/create" className="btn-NN" >+</Link>}
             </div>

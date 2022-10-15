@@ -5,6 +5,7 @@ import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import LoginPage from './LoginPage'
+import Profile from './Profile';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/create" element= {<Create/>}>
           </Route>  
           <Route path="home/task/:id" element = {<BlogDetails/>}>
+          </Route>  
+          <Route path="/profile" element = {<Profile/>}>
           </Route>  
           <Route path="*" element= {<NotFound/>}>
           </Route>  
