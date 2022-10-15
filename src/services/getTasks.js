@@ -11,7 +11,6 @@ const getTasks = async () => {
         }
     }
     const { data } = await axios.get(urlTasks, config)
-    console.log(data)
 }
 
 export default getTasks

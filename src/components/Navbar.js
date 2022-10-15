@@ -28,11 +28,11 @@ const Navbar = (props) => {
     
     return (    
         <nav className="navbar">
-            <h1>NoteIt!</h1>
+            <h1>NoteIt! <span>(beta)</span> </h1>
             <div className="links">
                 { isLoggedIn && <button className="logout-button" onClick={ handleLogout }>Log out</button>}
                 { isLoggedIn && <Link to="/home">Home</Link> }
-                <Link to="/create" className="btn-NN" >+</Link>
+                { isLoggedIn && <Link to="/create" className="btn-NN" >+</Link>}
             </div>
         </nav>
       );
