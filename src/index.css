@@ -9,6 +9,32 @@
   color: #333;
 }
 
+.blog-list {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  word-break: break-word;
+}
+
+.title-task-content {
+  margin-bottom: 30px;
+}
+
+.task-status {
+  font-weight: 600;
+  padding: 5px 8px;
+  background-color: #5dbb63be;
+  min-width: fit-content;
+  font-size: 0.8rem !important;
+  border-radius: 8px;
+}
+.status-div p{
+  width: fit-content;
+}
+
+.status-div {
+  border-top: 1px solid rgba(112, 108, 108, 0.212);
+}
 .login-user {
   position: absolute;
   top: 50%;
@@ -29,6 +55,14 @@
   padding: 0 40px;
   box-sizing: border-box;
 }
+
+.signup-link {
+  margin: 20px;
+}
+.signup-link p{
+  color: blue;
+}
+
 form .txt_field{
   position: relative;
   border-bottom: 2px solid #adadad;
@@ -43,10 +77,9 @@ form .txt_field{
   outline: none;
 }
 .txt_field label{
+  font-size: 13px !important;
   position: absolute;
   top: 30%;
-  left: 50%;
-  transform: translate(-50%);
   font-size: 16px;
   pointer-events: none;
   color: #adadad;
@@ -142,11 +175,14 @@ span{
 
 /* Blogs Style */
 
-.blog-preview {
-  padding: 10px 16px;
-  margin: 20px 0;
+
+.blog-preview a{
+  display: grid;
+  padding: 0px 16px;
   border-bottom: 1px solid #fafafa;
+  grid-template-rows: 3fr 1fr;
 }
+
 .logout-button {
   outline: none;
   border: none;

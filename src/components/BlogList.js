@@ -6,16 +6,26 @@ const BlogList = (props) => {
     const task = props.description;
 
     return (  
-        <div className="blog-list">
-            <h2> { task } </h2>
-            { posts.map( (post) => (
-                <div className="blog-preview" key={post._id}>
-                    <Link to={`task/${post._id}`}>
-                        <h2> { post.description } </h2>
-                        <p> Completed: { post.status } </p>
-                    </Link>
-                </div>
-            ))}
+        <div className="tasks-content">
+            <div className="title-task-content">
+                <h3> Tasks: </h3>
+            </div>
+            { posts.length == 0 && <div> It's kind of empty here </div>}
+            { posts.lengt > 0 && <div className="blog-list">
+                {
+                    posts.map( (post) => (
+                        <div className="blog-preview" key={post._id}>
+                            <Link to={`task/${post._id}`}>
+                                <div>
+                                    <p> { post.description } </p>
+                                </div>
+                                <div className="status-div">
+                                    <p className="task-status"> { post.status } </p>
+                                </div>
+                            </Link>
+                        </div>
+                ))}
+            </div> }
         </div>
       );
 }

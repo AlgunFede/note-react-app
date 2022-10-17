@@ -6,6 +6,7 @@ import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import LoginPage from './LoginPage'
 import Profile from './Profile';
+import SignUp from './SignUp';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="home/task/:id" element = {<BlogDetails/>}>
           </Route>  
           <Route path="/profile" element = {<Profile/>}>
+          </Route>  
+          <Route path="/signup" element = {<SignUp/>}>
           </Route>  
           <Route path="*" element= {<NotFound/>}>
           </Route>  

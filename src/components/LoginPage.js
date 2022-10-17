@@ -3,6 +3,8 @@ import useFetch from "./useFetch";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import loginService from '../services/login'
+import { Link } from "react-router-dom";
+
 
 // post /users/login to login user
 
@@ -21,7 +23,6 @@ const LoginPage = () => {
         }
     })
     const handleLogin =  async (e) => {
-        
         try {
             e.preventDefault()
             const user = await loginService.login({
@@ -51,6 +52,7 @@ const LoginPage = () => {
                     type="text"
                     value={username}
                     name= 'username'
+                    required
                     onChange={(target) => { setUsername(target.value)}} 
                 />
                 <span></span>
@@ -61,6 +63,7 @@ const LoginPage = () => {
                     type="password"
                     value={password}
                     name= 'password'
+                    required
                     onChange={(target) => { setPassword(target.value)}} 
                 />
                 <span></span>
@@ -68,6 +71,11 @@ const LoginPage = () => {
             </div>
             <div>
                 <button className="login-btn">Log In</button> 
+            </div>
+            <div className="signup-link">
+                <Link to={`/signup`}>    
+                    <p> Create an account! </p>
+                </Link>
             </div>
           </form>
         </div>
