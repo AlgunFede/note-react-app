@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
     
-    const link = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
+    const link = process.env.REACT_APP_BASE_URL;
     const history = useNavigate()
     let isLoggedIn = false
     const token = window.localStorage.getItem('loggedTaskAppUser');
@@ -21,7 +21,6 @@ const Profile = () => {
     }
 
     const { data: user, isPending, error } = useFetch(link + '/users/me')
-    console.log(user.name)
 
     const handleLogout = async () => {
         
@@ -45,7 +44,7 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <div className="name-container">
-                <h1>Hola!</h1>
+                <h1>Hola {user.name}!</h1>
             </div>
             <div className="avatar-container">
                 <img src={logo} alt="avatar"></img>
