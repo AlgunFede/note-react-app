@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const useFetch = (url) => {
 
-const [data, setBlogs] = useState(null);
-const [isPending, setIsPending] = useState(true);
-const [error, setError] = useState(null);
+    const [data, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
+
+    console.log('URL recibida', url)
 
     useEffect( () => {
 

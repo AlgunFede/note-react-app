@@ -20,6 +20,7 @@ const Profile = () => {
         isLoggedIn = true
     }
 
+    
     const { data: user, isPending, error } = useFetch(link + '/users/me')
 
     const handleLogout = async () => {
@@ -43,29 +44,34 @@ const Profile = () => {
 
     return (
         <div className="profile-container">
-            <div className="name-container">
-                <h1>Hola {user.name}!</h1>
-            </div>
-            <div className="avatar-container">
-                <img src={logo} alt="avatar"></img>
-            </div>
-            <div className="info-container">
-                <div>
-                    <h4>Description:</h4>
-                </div>
-                <div>
-                    <p>Set your description!</p>
-                </div>
+            { error && <div> {error} </div> }
+            { isPending && <div>Loading...</div> }
+            { user && <div>
 
-            </div>
-            <div className='options-btns'>
-                <div>
-                    <button className="logout-button" onClick={ handleLogout }>Log out</button>
+                <div className="name-container">
+                    <h1>Hola {user.name}!</h1>
                 </div>
-                <div>
-                    <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
+                <div className="avatar-container">
+                    <img src={logo} alt="avatar"></img>
                 </div>
-            </div>
+                <div className="info-container">
+                    <div>
+                        <h4>Description:</h4>
+                    </div>
+                    <div>
+                        <p>Set your description!</p>
+                    </div>
+
+                </div>
+                <div className='options-btns'>
+                    <div>
+                        <button className="logout-button" onClick={ handleLogout }>Log out</button>
+                    </div>
+                    <div>
+                        <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
+                    </div>
+                </div>
+                </div>}
         
         </div>
     )

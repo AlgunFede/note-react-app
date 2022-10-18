@@ -42,7 +42,6 @@ const BlogDetails = () => {
         }
         try {
             const finalNote = await editServices.sentEdition(bodyContent, id);
-            console.log('Final note', finalNote)
             history('/home')
         } catch(e){
             console.log('Error en la edicion', e)
