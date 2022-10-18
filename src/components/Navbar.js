@@ -18,7 +18,7 @@ const Navbar = () => {
     }
 
     const handleLogout = async () => {
-        await axios.post('http://localhost:3000/users/logout/', {}, config).then((e) => {
+        await axios.post('https://noteit.fly.dev/users/logout/', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {

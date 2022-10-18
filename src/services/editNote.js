@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const sentEdition = async (content, id) => {
 
-    const urlTasks = 'http://localhost:3000/task/' + id
+    const urlTasks = 'https://noteit.fly.dev/task/' + id
 
     const token = window.localStorage.loggedTaskAppUser;
 

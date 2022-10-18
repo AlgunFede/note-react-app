@@ -19,11 +19,11 @@ const Profile = () => {
         isLoggedIn = true
     }
 
-    const { data: user, isPending, error } = useFetch('http://localhost:3000/users/me')
+    const { data: user, isPending, error } = useFetch('https://noteit.fly.dev/users/me')
     console.log(user.name)
     const handleLogout = async () => {
         
-        await axios.post('http://localhost:3000/users/logout/', {}, config).then((e) => {
+        await axios.post('https://noteit.fly.dev/users/logout/', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {
@@ -32,7 +32,7 @@ const Profile = () => {
     };
 
     const handleLogoutAllUsr = async () => {
-        await axios.post('http://localhost:3000/users/logoutAll', {}, config).then((e) => {
+        await axios.post('https://noteit.fly.dev/users/logoutAll', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {

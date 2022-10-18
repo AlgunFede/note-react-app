@@ -4,7 +4,7 @@ import { useNavigate  } from 'react-router-dom'
 const SignUp = () => {
 
 
-    const urlLogin = 'http://localhost:3000/users'
+    const urlLogin = 'https://noteit.fly.dev/users'
 
     const history = useNavigate()
 

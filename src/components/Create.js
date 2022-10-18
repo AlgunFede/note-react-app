@@ -27,7 +27,7 @@ const Create = () => {
 
         const data = async () => {
 
-            await axios.post('http://localhost:3000/task/', task, config).then((res) => {
+            await axios.post('https://noteit.fly.dev/task/', task, config).then((res) => {
                 setIsPending(false);
                 history('/home')
             }).catch((e) => {

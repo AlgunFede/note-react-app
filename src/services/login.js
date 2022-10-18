@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const urlLogin = 'http://localhost:3000/users/login'
+const urlLogin = 'https://noteit.fly.dev/users/login'
  
 const login = async credentials => {
     const { data } = await axios.post(urlLogin, credentials)

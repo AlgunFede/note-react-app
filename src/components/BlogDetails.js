@@ -8,7 +8,7 @@ import editServices from '../services/editNote'
 const BlogDetails = () => {
 
     const { id } = useParams();
-    const { data: post, isPending, error } = useFetch('http://localhost:3000/task/' + id);
+    const { data: post, isPending, error } = useFetch('https://noteit.fly.dev/task/' + id);
 
     const [enableEdit, setEnableEdit] = useState(false)
     // Get token
