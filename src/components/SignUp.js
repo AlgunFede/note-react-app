@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { useNavigate  } from 'react-router-dom'
 const SignUp = () => {
 
-
-    const urlLogin = 'https://noteit.fly.dev/users'
+    const link = process.env.DEFAULT_URL
+    const urlLogin = link + '/users'
 
     const history = useNavigate()
 

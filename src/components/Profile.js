@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
     
+    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
     const history = useNavigate()
     let isLoggedIn = false
     const token = window.localStorage.getItem('loggedTaskAppUser');
@@ -19,11 +20,12 @@ const Profile = () => {
         isLoggedIn = true
     }
 
-    const { data: user, isPending, error } = useFetch('https://noteit.fly.dev/users/me')
+    const { data: user, isPending, error } = useFetch(link + '/users/me')
     console.log(user.name)
+
     const handleLogout = async () => {
         
-        await axios.post('https://noteit.fly.dev/users/logout/', {}, config).then((e) => {
+        await axios.post(link + '/users/logout/', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {
@@ -32,7 +34,7 @@ const Profile = () => {
     };
 
     const handleLogoutAllUsr = async () => {
-        await axios.post('https://noteit.fly.dev/users/logoutAll', {}, config).then((e) => {
+        await axios.post(link + '/users/logoutAll', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {
@@ -43,7 +45,7 @@ const Profile = () => {
     return (
         <div className="profile-container">
             <div className="name-container">
-                <h1>Hola {user.name}!</h1>
+                <h1>Hola!</h1>
             </div>
             <div className="avatar-container">
                 <img src={logo} alt="avatar"></img>

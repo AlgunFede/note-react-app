@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const urlTasks = 'https://noteit.fly.dev/task'
+
+const link = process.env.DEFAULT_URL
+const urlTasks = link + '/task'
 
 const getTasks = async () => {
     const token = window.localStorage.loggedTaskAppUser;

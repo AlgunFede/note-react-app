@@ -3,8 +3,9 @@ import useFetch from './useFetch';
 
 const Home = () => {
 
-const { data: tasks, isPending, error } = useFetch('https://noteit.fly.dev/task')
-
+    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
+    const { data: tasks, isPending, error } = useFetch(link + '/task')
+    console.log(process.env)
     return (  
             <div className="home">
                 { error && <div> {error} </div> }

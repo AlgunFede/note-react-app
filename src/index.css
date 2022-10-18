@@ -302,7 +302,6 @@ span{
   .options-btns div {
     display: grid;
     min-width: 100%;
-    background-color: red;
   }
 
   .name-container {
@@ -513,4 +512,9 @@ span{
   display: grid;
   align-items: center;
   padding: 0.7rem;
+}
+.name-container h1 {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  font-weight: 500;
 }

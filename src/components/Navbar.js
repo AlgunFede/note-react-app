@@ -4,6 +4,8 @@ import axios from "axios";
 
 const Navbar = () => {
 
+    const link = process.env.DEFAULT_URL
+
     const history = useNavigate()
     let isLoggedIn = false
     const token = window.localStorage.getItem('loggedTaskAppUser');
@@ -18,7 +20,7 @@ const Navbar = () => {
     }
 
     const handleLogout = async () => {
-        await axios.post('https://noteit.fly.dev/users/logout/', {}, config).then((e) => {
+        await axios.post(link + '/users/logout/', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {

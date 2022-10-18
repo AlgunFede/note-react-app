@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const urlLogin = 'https://noteit.fly.dev/users/login'
+const link = process.env.DEFAULT_URL
+const urlLogin = link + '/users/login'
  
 const login = async credentials => {
     const { data } = await axios.post(urlLogin, credentials)

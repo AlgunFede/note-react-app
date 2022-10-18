@@ -7,8 +7,9 @@ import editServices from '../services/editNote'
 
 const BlogDetails = () => {
 
+    const link = process.env.DEFAULT_URL
     const { id } = useParams();
-    const { data: post, isPending, error } = useFetch('https://noteit.fly.dev/task/' + id);
+    const { data: post, isPending, error } = useFetch(link +'/task/' + id);
 
     const [enableEdit, setEnableEdit] = useState(false)
     // Get token
@@ -24,7 +25,7 @@ const BlogDetails = () => {
     const history = useNavigate();
 
     const handleClick = () => {
-        fetch('http://localhost:3000/task/' + id, config)
+        fetch(link + '/task/' + id, config)
             .then( (res) => {
                 history('/home')
             }).catch((e) => console.log("Something fail"))
