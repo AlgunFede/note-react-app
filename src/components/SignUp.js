@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate  } from 'react-router-dom'
 const SignUp = () => {
 
-    const link = process.env.DEFAULT_URL
+    const link = process.env.REACT_APP_BASE_URL
     const urlLogin = link + '/users'
 
     const history = useNavigate()

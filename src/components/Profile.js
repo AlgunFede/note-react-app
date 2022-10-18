@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
     
-    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
+    const link = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
     const history = useNavigate()
     let isLoggedIn = false
     const token = window.localStorage.getItem('loggedTaskAppUser');

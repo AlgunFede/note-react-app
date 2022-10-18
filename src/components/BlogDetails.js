@@ -7,7 +7,7 @@ import editServices from '../services/editNote'
 
 const BlogDetails = () => {
 
-    const link = process.env.DEFAULT_URL
+    const link = process.env.REACT_APP_BASE_URL
     const { id } = useParams();
     const { data: post, isPending, error } = useFetch(link +'/task/' + id);
 

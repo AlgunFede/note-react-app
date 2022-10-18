@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const link = process.env.DEFAULT_URL
+const link = process.env.REACT_APP_BASE_URL
 const urlLogin = link + '/users/login'
  
 const login = async credentials => {

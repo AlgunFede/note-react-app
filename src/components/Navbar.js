@@ -4,7 +4,7 @@ import axios from "axios";
 
 const Navbar = () => {
 
-    const link = process.env.DEFAULT_URL
+    const link = process.env.REACT_APP_BASE_URL
 
     const history = useNavigate()
     let isLoggedIn = false

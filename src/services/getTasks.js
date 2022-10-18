@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const link = process.env.DEFAULT_URL
+const link = process.env.REACT_APP_BASE_URL
 const urlTasks = link + '/task'
 
 const getTasks = async () => {
