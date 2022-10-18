@@ -43,10 +43,10 @@ const Profile = () => {
     }
 
     return (
-        <div className="profile-container">
+        <div>
             { error && <div> {error} </div> }
             { isPending && <div>Loading...</div> }
-            { user && <div>
+            { user && <div className="profile-container">
 
                 <div className="name-container">
                     <h1>Hola {user.name}!</h1>
@@ -71,7 +71,7 @@ const Profile = () => {
                         <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
                     </div>
                 </div>
-                </div>}
+            </div>}
         
         </div>
     )
