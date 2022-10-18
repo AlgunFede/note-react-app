@@ -3,7 +3,7 @@ import useFetch from './useFetch';
 
 const Home = () => {
 
-    const link = process.env.REACT_APP_BASE_URL + '/task' || 'http://localhost:3000/task'
+    const link = process.env.REACT_APP_BASE_URL
     const { data: tasks, isPending, error } = useFetch(link + '/task')
     console.log(process.env)
     return (  
