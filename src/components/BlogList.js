@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 const BlogList = (props) => {
 
     const posts = props.tasks;
-    const task = props.description;
 
     return (  
         <div className="tasks-content">
             <div className="title-task-content">
                 <h3> Tasks: </h3>
             </div>
-            { posts.length == 0 && <div> It's kind of empty here </div>}
-            { posts.lengt > 0 && <div className="blog-list">
+            { posts.length === 0 && <div className="empty-box">
+                <p>Create a note!</p>
+            </div> }
+            <div className="blog-list">
                 {
                     posts.map( (post) => (
                         <div className="blog-preview" key={post._id}>
                             <Link to={`task/${post._id}`}>
-                                <div>
+                                <div className="blog-preview-p">
                                     <p> { post.description } </p>
                                 </div>
                                 <div className="status-div">
@@ -25,7 +26,7 @@ const BlogList = (props) => {
                             </Link>
                         </div>
                 ))}
-            </div> }
+            </div>
         </div>
       );
 }

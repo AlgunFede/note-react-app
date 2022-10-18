@@ -10,11 +10,17 @@
 }
 
 .blog-list {
-  display: grid;
+  /* display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
-  word-break: break-word;
+  word-break: break-word; */
+  display: flex;
+  height: min-content;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
+
 
 .title-task-content {
   margin-bottom: 30px;
@@ -28,11 +34,18 @@
   font-size: 0.8rem !important;
   border-radius: 8px;
 }
-.status-div p{
-  width: fit-content;
+
+.empty-box {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
 }
 
 .status-div {
+  display: grid;
+  justify-content: center;
+  align-content: center;
   border-top: 1px solid rgba(112, 108, 108, 0.212);
 }
 .login-user {
@@ -122,7 +135,7 @@ form .txt_field{
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 60vw;
   margin: 0 auto;
   border-bottom: 2px solid #f2f2f2;
 }
@@ -168,20 +181,141 @@ span{
 }
 
 .content {
-  max-width: 600px;
+  max-width: 60vw;
   margin: 0px auto;
   padding: 20px;
 }
 
 /* Blogs Style */
 
+.blog-preview {
+  max-width: 33%;
+  min-width: 20%;
+  margin: 6px;
+  max-height: min-content;
+  display: grid;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
 
 .blog-preview a{
   display: grid;
-  padding: 0px 16px;
+  text-decoration: none;
   border-bottom: 1px solid #fafafa;
   grid-template-rows: 3fr 1fr;
+  word-break: break-all;
+
 }
+
+@media (max-width: 700px) {
+
+  .navbar{
+    min-width: 90vw;
+  }
+  .btn-NN {
+    right: 10%;
+  }
+  .content{
+    margin: 0px auto;
+    padding: 0px;
+    min-width: 90vw;
+  }
+  .home{
+    min-width: 90vw;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blog-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1;
+  }
+  .blog-preview{
+    margin: 0px;
+    min-width: 100%;
+    display: grid;
+    background-color: #f2f2f2;
+  }
+  .blog-preview a{
+    min-width: 100% !important;
+    padding: 0;
+
+  }
+  .blog-preview a div{
+    font-size: 1rem;
+  }
+  .blog-preview-p{
+    padding: 10px;
+    max-width: 100% !important;
+
+  }
+
+
+  .login-user {
+    width: 70%;
+  }
+  .login-user form {
+    padding: 0px;
+  }
+  .signup-link {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin: 20px;
+    font-size: 1.2rem;
+  }
+  .signup-link a{
+    text-decoration: none;
+  }
+
+  .profile-container {
+    margin: 0px !important;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 17rem 10rem;
+    gap: 0px !important;
+  }
+
+
+  .info-container {
+    padding: 0.7rem;
+  }
+  .info-container h4{
+    margin-bottom: 1rem;
+  }
+  .avatar-container {
+    margin: 1rem;
+  }
+  .logout-button {
+    margin: 0px !important;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, .1);
+  }
+  .options-btns { 
+    margin: 0px !important;
+    display: block;
+    grid-template-rows: 1fr 1fr;
+    align-content: center;
+    justify-content: center;
+  }
+  .options-btns div {
+    display: grid;
+    min-width: 100%;
+    background-color: red;
+  }
+
+  .name-container {
+    padding: 0px !important;
+  }
+  .name-container h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    font-weight: 400;
+  }
+}
+
 
 .logout-button {
   outline: none;
@@ -189,13 +323,13 @@ span{
   background-color: white;
   color: #f1356d;
   padding: 6px 18px;
-  margin: 10px auto;
-  margin-right: 10px;
-  text-align: left;
+  margin: 0px 1rem 1rem 1rem;
+  text-align: center;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.7s;
   border: 1px solid #f1356d;
+  width: fit-content;
 }
 
 .logout-button:hover{
@@ -235,11 +369,6 @@ span{
   box-shadow: 1px 3px 5px rgba(0, 0, 0, .1);
 }
 
-.blog-preview h2 {
-  font-size: 25px;
-  margin-bottom: 10px;
-  color: #DA2265;
-}
 
 .delete-btn {
   border: none;
@@ -248,10 +377,6 @@ span{
   padding: 0px;
   cursor: pointer;
   margin-top: 5px;
-}
-
-.blog-preview a{
-  text-decoration: none;
 }
 
 /* Blog details page  */
@@ -340,9 +465,11 @@ span{
 
 .profile-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   margin-top: 10px;
+  gap: 1rem;
+  align-content: center;
+  justify-content: center;
 }
 
 .profile-container p {
@@ -355,5 +482,35 @@ span{
 }
 
 .options-btns {
-  margin-top: 20px;
+  margin-top: 30px;
+  display: grid;
+  justify-content: left;
+}
+
+.avatar-container {
+  margin: 0px !important;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+.avatar-container {
+  min-height: 30vh;
+}
+.info-container {
+  display: grid;
+  align-content: center;
+  grid-template-rows: 2fr 2fr;
+  min-height: 60px;
+}
+.info-container div:first-child {
+  display: grid;
+  align-content: center;
+}
+.info-container div:nth-child(2) p{
+  color: rgb(143, 143, 143);
+}
+.name-container{
+  display: grid;
+  align-items: center;
+  padding: 0.7rem;
 }
