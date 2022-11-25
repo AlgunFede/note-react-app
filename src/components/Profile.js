@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
     
-    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
+    const link = process.env.REACT_APP_BASE_URL;
     const history = useNavigate()
     let isLoggedIn = false
     const token = window.localStorage.getItem('loggedTaskAppUser');
@@ -22,8 +22,12 @@ const Profile = () => {
         history('/')
     }
 
+    
     const { data: user, isPending, error } = useFetch(link + '/users/me')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 481059c9e22b56f6ed5086ee3db01c4070cb0bd9
 
     const handleLogout = async () => {
         await axios.post(link + '/users/logout/', {}, config).then((e) => {
@@ -44,6 +48,7 @@ const Profile = () => {
     }
 
     return (
+<<<<<<< HEAD
         <div className="profile-container">
             <div className="name-container">
                 {user && <h1>Hola {user.name}!</h1>}
@@ -58,16 +63,37 @@ const Profile = () => {
                 <div>
                     <p>Set your description!</p>
                 </div>
+=======
+        <div>
+            { error && <div> {error} </div> }
+            { isPending && <div>Loading...</div> }
+            { user && <div className="profile-container">
+>>>>>>> 481059c9e22b56f6ed5086ee3db01c4070cb0bd9
 
-            </div>
-            <div className='options-btns'>
-                <div>
-                    <button className="logout-button" onClick={ handleLogout }>Log out</button>
+                <div className="name-container">
+                    <h1>Hola {user.name}!</h1>
                 </div>
-                <div>
-                    <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
+                <div className="avatar-container">
+                    <img src={logo} alt="avatar"></img>
                 </div>
-            </div>
+                <div className="info-container">
+                    <div>
+                        <h4>Description:</h4>
+                    </div>
+                    <div>
+                        <p>Set your description!</p>
+                    </div>
+
+                </div>
+                <div className='options-btns'>
+                    <div>
+                        <button className="logout-button" onClick={ handleLogout }>Log out</button>
+                    </div>
+                    <div>
+                        <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
+                    </div>
+                </div>
+            </div>}
         
         </div>
     )

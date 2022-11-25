@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Create = () => {
 
+    const link = process.env.REACT_APP_BASE_URL
     const { id } = useParams()
     const [status, setStatus] = useState('Not Started'); 
     const [description, setDescription] = useState('');
@@ -27,7 +28,7 @@ const Create = () => {
 
         const data = async () => {
 
-            await axios.post('https://noteit.fly.dev/task/', task, config).then((res) => {
+            await axios.post(link + '/task/', task, config).then((res) => {
                 setIsPending(false);
                 history('/home')
             }).catch((e) => {

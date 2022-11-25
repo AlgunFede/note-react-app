@@ -7,7 +7,7 @@ import editServices from '../services/editNote'
 
 const BlogDetails = () => {
 
-    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
+    const link = process.env.DEFAULT_URL
     const { id } = useParams();
     const { data: post, isPending, error } = useFetch(link +'/task/' + id);
 
@@ -42,6 +42,7 @@ const BlogDetails = () => {
         }
         try {
             const finalNote = await editServices.sentEdition(bodyContent, id);
+            console.log('Final note', finalNote)
             history('/home')
         } catch(e){
             console.log('Error en la edicion', e)
