@@ -7,7 +7,7 @@ import editServices from '../services/editNote'
 
 const BlogDetails = () => {
 
-    const link = process.env.DEFAULT_URL
+    const link = process.env.DEFAULT_URL || 'http://localhost:3000'
     const { id } = useParams();
     const { data: post, isPending, error } = useFetch(link +'/task/' + id);
 
@@ -42,7 +42,6 @@ const BlogDetails = () => {
         }
         try {
             const finalNote = await editServices.sentEdition(bodyContent, id);
-            console.log('Final note', finalNote)
             history('/home')
         } catch(e){
             console.log('Error en la edicion', e)
@@ -53,6 +52,7 @@ const BlogDetails = () => {
     const handleCancelEdit = () => {
         setEnableEdit(false)
     }
+
 
     return ( 
         
@@ -65,12 +65,23 @@ const BlogDetails = () => {
                     { !enableEdit && <h2>{ post.description }</h2>}
                     { enableEdit && <h2> Edit your note:</h2>}
                     { enableEdit && <textarea id="editContent" className="textarea">{ post.description }</textarea> }
-                    <p>Status: { post.status }</p>
-                    <p> Created: { Date(post.createdAt) }</p>
-                    { !enableEdit && <button onClick={ handleClick }>Delete</button>}
-                    { !enableEdit && <button className="edit-button" onClick={ handleEdit }>Edit</button>}
-                    { enableEdit && <button className="edit-button" onClick={ handleFetchEdit }>Confirm Edit</button>}
-                    { enableEdit && <button onClick={ handleCancelEdit }>Cancel</button>}
+                    <div>
+                        <p>Status: { post.status }</p>
+                    </div>
+                    
+                    <div className="blog-details-btn">
+                        <div>
+                            <p> Created: {post.createdAt}</p>
+                        </div>
+                        <div>
+                            { !enableEdit && <button onClick={ handleClick }>Delete</button>}
+                            { !enableEdit && <button className="edit-button" onClick={ handleEdit }>Edit</button>}
+                        </div>
+                        <div>
+                            { enableEdit && <button className="edit-button" onClick={ handleFetchEdit }>Confirm Edit</button>}
+                            { enableEdit && <button onClick={ handleCancelEdit }>Cancel</button>}
+                        </div>
+                    </div>
                     
                 </article>
             ) }

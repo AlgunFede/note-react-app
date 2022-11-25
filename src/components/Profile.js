@@ -13,23 +13,24 @@ const Profile = () => {
     const config = {
         headers: {
             'Authorization': `Bearer ${JSON.parse(token)}`,
-        },
+        }
     }
 
     if(token) {
         isLoggedIn = true
+    } else {
+        history('/')
     }
 
     const { data: user, isPending, error } = useFetch(link + '/users/me')
-    console.log(user.name)
+
 
     const handleLogout = async () => {
-        
         await axios.post(link + '/users/logout/', {}, config).then((e) => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {
-            console.log(e)
+            throw new Error('Failed Log out!')
         })
     };
 
@@ -38,14 +39,14 @@ const Profile = () => {
             window.localStorage.removeItem('loggedTaskAppUser')
             history('/')
         }).catch(e => {
-            console.log(e)
+            throw new Error('Failed Log out!')
         })
     }
 
     return (
         <div className="profile-container">
             <div className="name-container">
-                <h1>Hola!</h1>
+                {user && <h1>Hola {user.name}!</h1>}
             </div>
             <div className="avatar-container">
                 <img src={logo} alt="avatar"></img>
