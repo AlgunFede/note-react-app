@@ -24,10 +24,6 @@ const Profile = () => {
 
     
     const { data: user, isPending, error } = useFetch(link + '/users/me')
-<<<<<<< HEAD
-
-=======
->>>>>>> 481059c9e22b56f6ed5086ee3db01c4070cb0bd9
 
     const handleLogout = async () => {
         await axios.post(link + '/users/logout/', {}, config).then((e) => {
@@ -48,7 +44,6 @@ const Profile = () => {
     }
 
     return (
-<<<<<<< HEAD
         <div className="profile-container">
             <div className="name-container">
                 {user && <h1>Hola {user.name}!</h1>}
@@ -63,12 +58,6 @@ const Profile = () => {
                 <div>
                     <p>Set your description!</p>
                 </div>
-=======
-        <div>
-            { error && <div> {error} </div> }
-            { isPending && <div>Loading...</div> }
-            { user && <div className="profile-container">
->>>>>>> 481059c9e22b56f6ed5086ee3db01c4070cb0bd9
 
                 <div className="name-container">
                     <h1>Hola {user.name}!</h1>
@@ -93,7 +82,7 @@ const Profile = () => {
                         <button className="logout-button" onClick={ handleLogoutAllUsr }>Log out all users</button>
                     </div>
                 </div>
-            </div>}
+            </div>
         
         </div>
     )
